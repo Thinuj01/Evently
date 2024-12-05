@@ -1,11 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing/Landing";
+
 function App() {
 
   return (
-    <>    
-    <h1>First Page</h1>
+    <>
+    <Routes>
+    <Route path="/" element={<Landing />} />
+    </Routes>    
     </>
   )
 }
