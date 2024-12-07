@@ -23,6 +23,9 @@ function Navbar() {
         <img src={LogoBlue} alt='Logo'/>
         <h1>Evently</h1>
       </div>
+      <div className="navbar-signin">
+        Sign in
+      </div>
     </div>
   )
 }
