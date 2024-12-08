@@ -11,7 +11,7 @@ function LoginForm() {
         <button type="submit" className="login-button">
           Login
         </button>
-        <a>Create a Account</a>
+        <a href="/register">Create a Account</a>
       </div>
     </div>
   );
