@@ -1,13 +1,13 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import "./SectionNavbar.css"
 import logoBlue from "../../Images/logo Blue.png"
 
-function SectionNavbar() {
-    const[activeItem,setActiveItem] = useState("Guest Management");
+function SectionNavbar({activeItem,handleChangeActiveItem}) {
 
     const handleItemClick = (ItemName) =>{
-        setActiveItem(ItemName);
+      handleChangeActiveItem(ItemName);
         console.log(ItemName);
     }
   return (
