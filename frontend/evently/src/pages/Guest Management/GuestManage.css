@@ -94,6 +94,7 @@
 }
 .guestManage-table-container tr{
     padding: 1rem;
+    text-align: center;
 }
 .guestManage-table-container tr:hover{
     background-color: #C3DAFF;
@@ -106,7 +107,28 @@
     padding: 0.7rem;
 }
 .guestManage-lastRow{
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+}
+
+.lastRow-button{
+    width: 15%;
+    height: 4vh;
+    background-color: #002663;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 1.2rem;
+    font-size: 1.2rem;
+    padding-left: 1vw;
+}
+.lastRow-button p{
+    margin-left: 1.5vw;
+}
+
+.lastRow-button:hover{
+    scale: 1.04;
 }

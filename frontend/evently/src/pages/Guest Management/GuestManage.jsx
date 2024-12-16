@@ -4,6 +4,7 @@ import "./GuestManage.css"
 import { FaSearch } from 'react-icons/fa';
 import { IoIosMailOpen } from "react-icons/io";
 import { FaPersonCirclePlus } from "react-icons/fa6";
+import { IoIosSend } from "react-icons/io";
 
 function GuestManage() {
   return (
@@ -53,7 +54,10 @@ function GuestManage() {
             </table>
         </div>
         <div className="guestManage-lastRow">
-            
+            <div className="lastRow-button">
+                <IoIosSend/>
+                <p>Send a Mail</p>
+            </div>
         </div>
     </div>
   )
