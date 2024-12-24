@@ -1,0 +1,70 @@
+.landing-container{
+    width:100%;
+    min-height: 150vh;
+}
+.navbar-sector{
+    
+}
+
+.features-section{
+    margin-left: 6vw;
+}
+
+.features-section h2{
+    margin: 0px;
+    margin-top: 2vh;
+    font-family: "Italianno", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3.2vw;
+    color: #002663;
+}
+
+.features-card-section{
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.landing-aboutus {
+    width: 100%;
+    margin-top: 8vh;
+    position: relative; 
+}
+
+.landing-aboutus img {
+    width: 100%;
+    height: 90vh;
+    object-fit: cover;
+}
+
+.aboutus-Text {
+    position: absolute;
+    top: 50%; 
+    left: 22%; 
+    transform: translate(-50%, -50%);
+    z-index: 1; 
+    width: 30%; 
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 2vw;
+    text-align: center; 
+    font-family: "Italianno", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: #002663; 
+    border-radius: 1vw; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.aboutus-Text h2{
+    font-size: 3.2vw;
+}
+
+.aboutus-Text p{
+    font-size: 2vw;
+}
+
+.footer-section{}
