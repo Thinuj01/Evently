@@ -1,0 +1,96 @@
+/* General Layout */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: #1A2D4E;
+    color: #fff;
+    width: 250px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: auto;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main-content {
+    background: white;
+    padding: 2rem;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Forms and Inputs */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input,
+textarea,
+select {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #1A2D4E;
+    color: #fff;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #2E4B85;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th,
+td {
+    padding: 1rem;
+    border: 1px solid #d1d5db;
+    text-align: center;
+}
+
+th {
+    background-color: #1A2D4E;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f1f5f9;
+}

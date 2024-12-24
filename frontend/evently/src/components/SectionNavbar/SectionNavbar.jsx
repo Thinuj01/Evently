@@ -28,6 +28,12 @@ function SectionNavbar({activeItem,handleChangeActiveItem}) {
       >
         <h3>Budget Management</h3>
       </div>
+            <div 
+        className={`sector-navbar-item ${activeItem === "Task Management" ? "sector-navbar-item-active" : "sector-navbar-item-normal"}`}
+        onClick={() => handleItemClick("Task Management")}
+      >
+        <h3>Task Management</h3>
+      </div>
     </div>
   )
 }
