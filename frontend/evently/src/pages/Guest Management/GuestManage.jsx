@@ -1,12 +1,19 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useState } from 'react'
 import "./GuestManage.css"
 import { FaSearch } from 'react-icons/fa';
 import { IoIosMailOpen } from "react-icons/io";
 import { FaPersonCirclePlus } from "react-icons/fa6";
 import { IoIosSend } from "react-icons/io";
+import Model from '../../components/Model/Model';
+import InviteForm from '../../components/InviteForm/InviteForm';
+import AddGuestForm from '../../components/AddGuestForm/AddGuestForm';
+import SendMailForm from '../../components/SendMailForm/SendMailForm';
 
 function GuestManage() {
+    const[isInviteModelOpen, setIsInviteModelOpen] = useState(false);
+    const[isAddGuestModelOpen, setIsAddGuestModelOpen] = useState(false);
+    const[isSendMailModelOpen, setIsSendMailModelOpen] = useState(false);
   return (
     <div className='guestManage-container'>
         <div className="guestManage-firstRow">
@@ -15,11 +22,11 @@ function GuestManage() {
                 <input type='text' placeholder='Search for a Guest'/>
             </div>
             <div className="guestManage-firstRow-buttons">
-                <div className="firstRow-button firstRow-inviteBtn">
+                <div className="firstRow-button firstRow-inviteBtn" onClick={()=>setIsInviteModelOpen(true)}>
                     <IoIosMailOpen/>
                     <p>invite</p>
                 </div>
-                <div className="firstRow-button firstRow-addBtn">
+                <div className="firstRow-button firstRow-addBtn" onClick={()=>setIsAddGuestModelOpen(true)}>
                     <FaPersonCirclePlus/>
                     <p>Add a guest</p>
                 </div>
@@ -54,11 +61,27 @@ function GuestManage() {
             </table>
         </div>
         <div className="guestManage-lastRow">
-            <div className="lastRow-button">
+            <div className="lastRow-button" onClick={()=>setIsSendMailModelOpen(true)}>
                 <IoIosSend/>
                 <p>Send a Mail</p>
             </div>
         </div>
+
+        <Model isOpen={isInviteModelOpen} onClose={()=> setIsInviteModelOpen(false)} >
+            <div className="inviteForm-container">
+                <InviteForm/>           
+            </div>
+        </Model>
+        <Model isOpen={isAddGuestModelOpen} onClose={()=> setIsAddGuestModelOpen(false)} >
+            <div className="inviteForm-container">
+                <AddGuestForm/>          
+            </div>
+        </Model>
+        <Model isOpen={isSendMailModelOpen} onClose={()=> setIsSendMailModelOpen(false)} >
+            <div className="inviteForm-container">
+                <SendMailForm/>     
+            </div>
+        </Model>
     </div>
   )
 }

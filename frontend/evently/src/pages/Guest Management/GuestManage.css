@@ -121,9 +121,10 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border-radius: 1.2rem;
+    border-radius: 1rem;
     font-size: 1.2rem;
     padding-left: 1vw;
+    transition: all 0.1s ease-in-out;
 }
 .lastRow-button p{
     margin-left: 1.5vw;
@@ -131,4 +132,8 @@
 
 .lastRow-button:hover{
     scale: 1.04;
+}
+
+.inviteForm-container{
+
 }
