@@ -9,11 +9,13 @@ import Model from '../../components/Model/Model';
 import InviteForm from '../../components/InviteForm/InviteForm';
 import AddGuestForm from '../../components/AddGuestForm/AddGuestForm';
 import SendMailForm from '../../components/SendMailForm/SendMailForm';
+import EditGuestForm from '../../components/EditGuestForm/EditGuestForm';
 
 function GuestManage() {
     const[isInviteModelOpen, setIsInviteModelOpen] = useState(false);
     const[isAddGuestModelOpen, setIsAddGuestModelOpen] = useState(false);
     const[isSendMailModelOpen, setIsSendMailModelOpen] = useState(false);
+    const[isEditGuestModelOpen, setIsEditGuestModelOpen] = useState(false);
   return (
     <div className='guestManage-container'>
         <div className="guestManage-firstRow">
@@ -48,7 +50,7 @@ function GuestManage() {
                     <td>thinujahettiarachchi@gmail.com</td>
                     <td>0713126607</td>
                     <td>comming</td>
-                    <td><a href='#'>Edit</a> <a href='#'>Delete</a></td>
+                    <td><a href="#"  onClick={()=>setIsEditGuestModelOpen(true)}>Edit</a> <a href='#'>Delete</a></td>
                 </tr>
                 <tr>
                     <td>Tiran Hettiarachchi</td>
@@ -56,7 +58,7 @@ function GuestManage() {
                     <td>tiran@gmail.com</td>
                     <td>0712427978</td>
                     <td>comming</td>
-                    <td><a href='#'>Edit</a> <a href='#'>Delete</a></td>
+                    <td><a href="#"  onClick={()=>setIsEditGuestModelOpen(true)}>Edit</a> <a href='#'>Delete</a></td>
                 </tr>
             </table>
         </div>
@@ -80,6 +82,11 @@ function GuestManage() {
         <Model isOpen={isSendMailModelOpen} onClose={()=> setIsSendMailModelOpen(false)} >
             <div className="inviteForm-container">
                 <SendMailForm/>     
+            </div>
+        </Model>
+        <Model isOpen={isEditGuestModelOpen} onClose={()=> setIsEditGuestModelOpen(false)} >
+            <div className="inviteForm-container">
+                <EditGuestForm/>  
             </div>
         </Model>
     </div>
