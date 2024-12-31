@@ -3,6 +3,7 @@ import React,{useState} from 'react'
 import "./SectionManager.css"
 import SectionNavbar from '../../components/SectionNavbar/SectionNavbar'
 import GuestManage from '../Guest Management/GuestManage';
+import TaskManage from '../Task Management/TaskManage';
 
 function SectionManager() {
     const[activeItem,setActiveItem] = useState("Guest Management");
@@ -14,7 +15,9 @@ function SectionManager() {
     const renderSector = ()=>{
       switch(activeItem)  {
         case "Guest Management":
-          return <GuestManage/>;
+          return <GuestManage />;
+        case "Task Management":
+          return <TaskManage />;
           
       }
     }
