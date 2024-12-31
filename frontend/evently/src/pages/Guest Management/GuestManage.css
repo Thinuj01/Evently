@@ -74,7 +74,7 @@
 
 .firstRow-button:hover{
     scale: 1.04;
-
+    cursor: pointer;
 }
 .guestManage-table-container{
     margin-top: 6vh;
@@ -132,6 +132,7 @@
 
 .lastRow-button:hover{
     scale: 1.04;
+    cursor: pointer;
 }
 
 .inviteForm-container{

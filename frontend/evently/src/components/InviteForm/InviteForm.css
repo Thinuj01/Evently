@@ -78,4 +78,5 @@
 }
 .inputForm-sendBtn:hover{
     scale: 1.04;
+    cursor: pointer;
 }

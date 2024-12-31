@@ -61,6 +61,7 @@
 
 .sector-navbar-item-normal{
     background-color: white;
+    cursor: pointer;
 }
 
 .sector-navbar-item-normal h3{
