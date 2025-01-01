@@ -33,6 +33,7 @@
     width: 60%;
     font-size: 1rem;
     color: #002663;
+    padding: 0px;
 }
 .gestManage-seachBar-sector input:focus{
     border: none;
