@@ -1,0 +1,52 @@
+.UserEvent-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5vh;
+  margin-left: 5vw;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: #002663;
+}
+
+.UserEvent-AddEventBtn-container {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.UserEvent-AddEventBtn{
+    width: 18%;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #002663;
+    color: white;
+    border-radius: 0.6vw;
+    transition: all 0.2s ease-in-out;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.UserEvent-AddEventBtn:hover{
+    scale: 1.02;
+}
+
+.UserEvent-table{
+    width: 70%;
+    margin-top: 5vh;
+}
+
+.UserEvent-table table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.UserEvent-table td{
+    border: 1px solid #d1d5db;
+    text-align: left;
+    margin-left: 1vw;
+}

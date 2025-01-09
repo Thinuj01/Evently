@@ -9,6 +9,7 @@ const TaskManage = () => {
             <h2>Task Management</h2>
             <input type="text" placeholder="Search for a task..." />
             <AddTask/>
+            <div className="taskManage-table">
             <table>
                 <thead>
                     <tr>
@@ -33,6 +34,8 @@ const TaskManage = () => {
                     </tr>
                 </tbody>
             </table>
+            </div>
+
         </div>
     );
 };

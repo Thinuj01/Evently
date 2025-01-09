@@ -73,24 +73,24 @@ button:hover {
     background-color: #2E4B85;
 }
 
-table {
+.taskManage-table table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
 }
 
-th,
+.taskManage-table th,
 td {
     padding: 1rem;
     border: 1px solid #d1d5db;
     text-align: center;
 }
 
-th {
+.taskManage-table th {
     background-color: #1A2D4E;
     color: white;
 }
 
-tr:nth-child(even) {
+.taskManage-table tr:nth-child(even) {
     background-color: #f1f5f9;
 }

@@ -67,3 +67,17 @@
 .sector-navbar-item-normal h3{
     color: #002663;
 }
+
+.sectionNav-userProPic img{
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    margin-top: 8vh;
+}
+
+.sectionNav-userName{
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-size: 1.2rem;
+    color: #002663;
+}
