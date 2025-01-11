@@ -28,7 +28,7 @@ function UserEvents() {
         <h2>My Events</h2>
       </div>
       <div className="UserEvent-AddEventBtn-container">
-        <div className="UserEvent-AddEventBtn">
+        <div className="UserEvent-AddEventBtn" onClick={()=> setIsAddEventModelOpen(true)}> 
             <IoIosAddCircle />
             <p>Add A Event</p>
         </div>
