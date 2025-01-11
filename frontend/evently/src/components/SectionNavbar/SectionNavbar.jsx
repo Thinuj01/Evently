@@ -4,8 +4,10 @@ import React, { useState } from 'react';
 import './SectionNavbar.css';
 import logoBlue from '../../Images/logo Blue.png';
 import UserPic from '../../Images/UserPic.png';
+import { useCookies } from 'react-cookie';
 
 function SectionNavbar({ activeItem, handleChangeActiveItem }) {
+  const [cookies] = useCookies(['user_id', 'first_name', 'last_name']);
   const handleItemClick = (ItemName) => {
     handleChangeActiveItem(ItemName);
     console.log(ItemName);
@@ -59,7 +61,7 @@ function SectionNavbar({ activeItem, handleChangeActiveItem }) {
             <img src={UserPic} alt='User' />
           </div>
           <div className="sectionNav-userName">
-            <h3>Test User</h3>
+            <h3>{cookies.first_name} {cookies.last_name}</h3>
             <h3>Welcome !</h3>
           </div>
         </>

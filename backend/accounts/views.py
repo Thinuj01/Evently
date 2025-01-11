@@ -36,3 +36,13 @@ class CheckUserCredentialsView(APIView):
                 return Response({"message": "Invalid password"}, status=status.HTTP_401_UNAUTHORIZED)
         except User.DoesNotExist:
             return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
+class UserByEmail(APIView):
+    def get(self, request, email):
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
