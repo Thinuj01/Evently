@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React,{useEffect, useState} from 'react'
 import './UserEvents.css'
@@ -7,8 +9,9 @@ import axios from 'axios';
 import Model from '../../components/Model/Model';
 import EventAddForm from '../../components/EventAddForm/EventAddForm';
 
-function UserEvents() {
-  const [cookies] = useCookies(['user_id']);
+
+function UserEvents({handleChangeActiveItem}) {
+  const [cookies,setCookie] = useCookies(['user_id','event_id','event_name']);
   const [events, setEvents] = useState([]);
   const [isAddEventModelOpen, setIsAddEventModelOpen] = useState(false);
 
@@ -22,6 +25,18 @@ function UserEvents() {
       console.log(error);
     });
   }, []);
+
+  const handleEventClick = (event_id) => {
+    axios.get(`http://localhost:8000/events/${event_id}/`)
+      .then((response)=>{
+        console.log(response.data);
+        setCookie('event_id',response.data.event_id);
+        setCookie('event_name',response.data.event_name);
+        handleChangeActiveItem('Guest Management');
+      }).catch((error)=>{
+        console.error(error);
+      })
+  }
   return (
     <div className='UserEvent-container'>
       <div className="UserEvent-Topic">
@@ -55,7 +70,7 @@ function UserEvents() {
             <tbody>
               {events.map((event) => (
                 <tr key={event.event_id}>
-                  <td>{event.event_name}</td>
+                  <td><a href='#' onClick={()=>handleEventClick(event.event_id)}>{event.event_name}</a></td>
                   <td>{event.event_venue}</td>
                   <td>{event.event_date}</td>
                   <td>{event.event_client_name}</td>

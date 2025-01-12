@@ -21,7 +21,7 @@ function SectionManager() {
         case "Task Management":
           return <TaskManage />;
         case "User Events":
-          return <UserEvents/>;
+          return <UserEvents handleChangeActiveItem={handleChangeActiveItem}/>;
           
       }
     }

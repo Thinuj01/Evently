@@ -7,7 +7,7 @@ import UserPic from '../../Images/UserPic.png';
 import { useCookies } from 'react-cookie';
 
 function SectionNavbar({ activeItem, handleChangeActiveItem }) {
-  const [cookies] = useCookies(['user_id', 'first_name', 'last_name']);
+  const [cookies] = useCookies(['user_id', 'first_name', 'last_name','event_id','event_name']);
   const handleItemClick = (ItemName) => {
     handleChangeActiveItem(ItemName);
     console.log(ItemName);
@@ -64,6 +64,12 @@ function SectionNavbar({ activeItem, handleChangeActiveItem }) {
             <h3>{cookies.first_name} {cookies.last_name}</h3>
             <h3>Welcome !</h3>
           </div>
+        </>
+      )}
+
+      {cookies.event_id && (
+        <>
+          <p>{cookies.event_name}</p>
         </>
       )} 
     </div>
