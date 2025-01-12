@@ -7,7 +7,7 @@ import TaskManage from '../Task Management/TaskManage';
 import UserEvents from '../User Events/UserEvents';
 
 function SectionManager() {
-    const[activeItem,setActiveItem] = useState("User Events");
+    const[activeItem,setActiveItem] = useState("Task Management");
     const[activeEvent, setActiveEvent] = useState("");
 
     const handleChangeActiveItem = (ItemName) =>{
