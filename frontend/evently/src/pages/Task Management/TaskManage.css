@@ -1,40 +1,10 @@
-/* General Layout */
-body {
-    margin: 0;
+.task-manage-container {
+    /* General Layout */
     font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
 }
 
-.container {
-    display: flex;
-    height: 100vh;
-}
-
-.sidebar {
-    background-color: #1A2D4E;
-    color: #fff;
-    width: 250px;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.sidebar button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 10px;
-    margin-top: auto;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.main-content {
+.task-manage-container .main-content {
     background: white;
     padding: 2rem;
     width: 100%;
@@ -43,23 +13,24 @@ body {
     overflow: hidden;
 }
 
-/* Forms and Inputs */
-form {
+.task-manage-container form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-input,
-textarea,
-select {
+.task-manage-container input,
+.task-manage-container textarea,
+.task-manage-container select {
     padding: 0.75rem;
     border: 1px solid #d1d5db;
     border-radius: 8px;
     font-size: 1rem;
+    background-color: #e0f7ff;
+    /* Light blue background */
 }
 
-button {
+.task-manage-container button {
     background-color: #1A2D4E;
     color: #fff;
     padding: 0.75rem;
@@ -69,28 +40,648 @@ button {
     font-weight: bold;
 }
 
-button:hover {
+.task-manage-container button:hover {
     background-color: #2E4B85;
 }
 
-.taskManage-table table {
+.task-manage-container .taskManage-table table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
 }
 
-.taskManage-table th,
-td {
+.task-manage-container .taskManage-table th,
+.task-manage-container .taskManage-table td {
     padding: 1rem;
     border: 1px solid #d1d5db;
     text-align: center;
 }
 
-.taskManage-table th {
+.task-manage-container .taskManage-table th {
     background-color: #1A2D4E;
     color: white;
 }
 
-.taskManage-table tr:nth-child(even) {
+.task-manage-container .taskManage-table tr:nth-child(even) {
     background-color: #f1f5f9;
+}
+
+.task-form-container {
+    max-width: 400px;
+    /* Set the maximum width of the form */
+    /*margin: 0 auto;*/
+    /* Center the form horizontally */
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-form-container form input {
+    width: 100%;
+    /* Ensure inputs span the container */
+    margin-bottom: 1rem;
+    /* Add spacing between inputs */
+}
+
+.task-form-container form button {
+    width: 100%;
+    /* Make the button span the container */
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #1A2D4E;
+    color: white;
+    cursor: pointer;
+}
+
+.task-form-container form button:hover {
+    background-color: #2E4B85;
+    /* Slightly darker on hover */
+}
+
+
+/* Style for Add Task Button */
+.add-task-button {
+    margin-top: 1rem;
+    background-color: #1A2D4E;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.add-task-button:hover {
+    background-color: #2E4B85;
+}
+
+/* Input Fields with Black Text */
+.task-form-container input {
+    color: black; /* Text inside the input field */
+}
+
+
+.task-form-container input::placeholder {
+    color: #6b7280;
+    /* Darker gray for better visibility */
+    font-weight: 500;
+    /* Slightly bold for emphasis */
+}
+
+.task-manage-container .taskManage-table select {
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.task-manage-container .taskManage-table th,
+.task-manage-container .taskManage-table td {
+    padding: 1rem;
+    border: 1px solid #d1d5db;
+    text-align: center;
+}
+
+.task-manage-container .taskManage-table th {
+    background-color: #1A2D4E;
+    color: white;
+}
+
+.task-manage-container .taskManage-table tr:nth-child(even) {
+    background-color: #f1f5f9;
+}
+
+.task-manage-container .taskManage-table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.task-status-count-container {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.task-status-count-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1A2D4E;
+}
+
+.status-summary {
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5rem;
+}
+
+.status-item {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.status-label {
+    font-weight: bold;
+}
+
+.status-count {
+    margin-left: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #1A2D4E;
+}
+
+.task-manage-container {
+    /* General Layout */
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.task-manage-container .main-content {
+    background: white;
+    padding: 2rem;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.task-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.task-status-count-container {
+    flex: 1;
+    /* Allow the status summary to grow */
+    max-width: 300px;
+    /* Set a max-width to avoid overflowing */
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-status-count-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1A2D4E;
+}
+
+.status-summary {
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5rem;
+}
+
+.status-item {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.status-label {
+    font-weight: bold;
+}
+
+.status-count {
+    margin-left: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #1A2D4E;
+}
+
+.task-manage-container .taskManage-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.task-manage-container .taskManage-table th,
+.task-manage-container .taskManage-table td {
+    padding: 1rem;
+    border: 1px solid #d1d5db;
+    text-align: center;
+}
+
+.task-manage-container .taskManage-table th {
+    background-color: #1A2D4E;
+    color: white;
+}
+
+.task-manage-container .taskManage-table tr:nth-child(even) {
+    background-color: #f1f5f9;
+}
+
+.task-manage-container {
+    /* General Layout */
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.task-manage-container .main-content {
+    background: white;
+    padding: 2rem;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.task-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    /* Add space between the two sections */
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
+}
+
+.add-task-container,
+.task-status-summary-container {
+    width: 48%;
+    /* Each container takes up almost half of the space */
+    max-width: 500px;
+    /* Set a max-width to avoid overflow */
+}
+
+.task-status-summary-container {
+    /* Ensure status summary has its own styling */
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-status-summary-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1A2D4E;
+}
+
+.status-summary {
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5rem;
+}
+
+.status-item {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.status-label {
+    font-weight: bold;
+}
+
+.status-count {
+    margin-left: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #1A2D4E;
+}
+
+.task-manage-container .taskManage-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.task-manage-container .taskManage-table th,
+.task-manage-container .taskManage-table td {
+    padding: 1rem;
+    border: 1px solid #d1d5db;
+    text-align: center;
+}
+
+.task-manage-container .taskManage-table th {
+    background-color: #1A2D4E;
+    color: white;
+}
+
+.task-manage-container .taskManage-table tr:nth-child(even) {
+    background-color: #f1f5f9;
+}
+
+.task-form-container {
+    max-width: 400px;
+    /* Set the maximum width of the form */
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-form-container form input {
+    width: 100%;
+    /* Ensure inputs span the container */
+    margin-bottom: 1rem;
+    /* Add spacing between inputs */
+}
+
+.task-form-container form button {
+    width: 100%;
+    /* Make the button span the container */
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #1A2D4E;
+    color: white;
+    cursor: pointer;
+}
+
+.task-form-container form button:hover {
+    background-color: #2E4B85;
+    /* Slightly darker on hover */
+}
+
+.task-manage-container {
+    /* General Layout */
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.task-manage-container .main-content {
+    background: white;
+    padding: 2rem;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.task-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    /* Add space between the two sections */
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
+}
+
+.add-task-container,
+.task-status-summary-container {
+    width: 48%;
+    /* Each container takes up almost half of the space */
+    max-width: 500px;
+    /* Set a max-width to avoid overflow */
+}
+
+.task-status-summary-container {
+    /* Ensure status summary has its own styling */
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-status-summary-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1A2D4E;
+}
+
+.status-summary {
+    display: flex;
+    flex-direction: column;
+    /* Stack the status items vertically */
+    gap: 1rem;
+    /* Add space between status items */
+}
+
+.status-item {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.status-label {
+    font-weight: bold;
+}
+
+.status-count {
+    margin-left: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #1A2D4E;
+}
+
+.task-manage-container .taskManage-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.task-manage-container .taskManage-table th,
+.task-manage-container .taskManage-table td {
+    padding: 1rem;
+    border: 1px solid #d1d5db;
+    text-align: center;
+}
+
+.task-manage-container .taskManage-table th {
+    background-color: #1A2D4E;
+    color: white;
+}
+
+.task-manage-container .taskManage-table tr:nth-child(even) {
+    background-color: #f1f5f9;
+}
+
+.task-form-container {
+    max-width: 400px;
+    /* Set the maximum width of the form */
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-form-container form input {
+    width: 100%;
+    /* Ensure inputs span the container */
+    margin-bottom: 1rem;
+    /* Add spacing between inputs */
+}
+
+.task-form-container form button {
+    width: 100%;
+    /* Make the button span the container */
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #1A2D4E;
+    color: white;
+    cursor: pointer;
+}
+
+.task-form-container form button:hover {
+    background-color: #2E4B85;
+    /* Slightly darker on hover */
+}
+
+.task-form-container {
+    box-shadow: none;
+}
+
+/* Add a specific class for the delete button */
+.delete-button {
+    background-color: #e53935;
+    /* Red color */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.delete-button:hover {
+    background-color: #c62828;
+    /* Darker red on hover */
+}
+
+/* Style for the edit button */
+.edit-button {
+    background-color: #ffa000;
+    /* Orange color */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #e67e00;
+    /* Darker orange on hover */
+}
+
+/* Style for the edit form */
+.edit-form-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-form-container label {
+    margin-bottom: 10px;
+}
+
+.edit-form-container input,
+.edit-form-container select {
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.edit-form-container button {
+    background-color: #388e3c;
+    /* Green color */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.edit-form-container button:hover {
+    background-color: #2e7d32;
+    /* Darker green */
+}
+
+/* Style for the edit link */
+.edit-link {
+    color: #1e88e5;
+    /* Blue color for edit link */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.edit-link:hover {
+    text-decoration: underline;
+}
+
+/* Style for the delete link */
+.delete-link {
+    color: #e53935;
+    /* Red color for delete link */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.delete-link:hover {
+    text-decoration: underline;
+}
+
+/* Space between the links */
+.space-between {
+    margin: 0 10px;
+}
+
+/* Style for the edit form */
+.edit-form-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-form-container label {
+    margin-bottom: 10px;
+}
+
+.edit-form-container input,
+.edit-form-container select {
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    color: #000;
+    /* Set text color to black */
+}
+
+.edit-form-container input::placeholder {
+    color: #000;
+    /* Set placeholder text color to black */
+}
+
+.edit-form-container button {
+    background-color: #388e3c;
+    /* Green color */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.edit-form-container button:hover {
+    background-color: #2e7d32;
+    /* Darker green */
 }
