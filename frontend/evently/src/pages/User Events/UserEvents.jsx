@@ -67,7 +67,7 @@ function UserEvents() {
       </div>
       <Model isOpen={isAddEventModelOpen} onClose={()=> setIsAddEventModelOpen(false)} >
             <div className="addEvent-container">
-                <EventAddForm />         
+                <EventAddForm onClose={()=> setIsAddEventModelOpen(false)}/>         
             </div>
       </Model>
     </div>

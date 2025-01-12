@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Event
 from .serializers import EventSerializer
+from accounts.models import User
 
 class EventDetail(APIView):
     def get(self, request, event_id):
@@ -16,7 +17,23 @@ class EventDetail(APIView):
 
 class EventCreate(APIView):
     def post(self, request):
-        serializer = EventSerializer(data=request.data)
+        data = request.data
+        try:
+            user = User.objects.get(pk=data['user_id'])
+        except User.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        event_data = {
+            'event_name': data.get('event_name'),
+            'event_venue': data.get('event_venue'),
+            'event_date': data.get('event_date'),
+            'event_client_name': data.get('event_client_name'),
+            'event_client_phone': data.get('event_client_phone'),
+            'event_client_address': data.get('event_client_address'),
+            'user': user.user_id
+        }
+        
+        serializer = EventSerializer(data=event_data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
