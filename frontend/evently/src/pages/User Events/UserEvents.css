@@ -45,8 +45,10 @@
     margin-top: 1rem;
 }
 
-.UserEvent-table td{
+.UserEvent-table td,th{
     border: 1px solid #d1d5db;
     text-align: left;
     margin-left: 1vw;
+    padding: 1vw;
 }
+

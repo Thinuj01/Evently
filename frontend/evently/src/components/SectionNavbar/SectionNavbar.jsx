@@ -1,16 +1,43 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import './SectionNavbar.css';
-import logoBlue from '../../Images/logo Blue.png';
-import UserPic from '../../Images/UserPic.png';
-import { useCookies } from 'react-cookie';
+import React, { useState } from "react";
+import "./SectionNavbar.css";
+import logoBlue from "../../Images/logo Blue.png";
+import UserPic from "../../Images/UserPic.png";
+import { useCookies } from "react-cookie";
 
 function SectionNavbar({ activeItem, handleChangeActiveItem }) {
-  const [cookies] = useCookies(['user_id', 'first_name', 'last_name','event_id','event_name']);
+  const [cookies, setCookie, removeCookie] = useCookies([
+    "user_id",
+    "first_name",
+    "last_name",
+    "event_id",
+    "event_name",
+  ]);
+
+  if (!cookies.first_name) {
+    window.location.href = "/login";
+    return null;
+  }
   const handleItemClick = (ItemName) => {
     handleChangeActiveItem(ItemName);
     console.log(ItemName);
+  };
+
+  const handleLogout = () => {
+    removeCookie("user_id", { path: "/" });
+    removeCookie("first_name", { path: "/" });
+    removeCookie("last_name", { path: "/" });
+    removeCookie("event_id", { path: "/" });
+    removeCookie("event_name", { path: "/" });
+    console.log("Logout");
+    window.location.href = "/login";
+  };
+
+  const handleBackToEvents = () => {
+    removeCookie("event_id", { path: "/" });
+    removeCookie("event_name", { path: "/" });
+    handleChangeActiveItem("User Events");
   };
 
   return (
@@ -52,26 +79,50 @@ function SectionNavbar({ activeItem, handleChangeActiveItem }) {
           >
             <h3>Task Management</h3>
           </div>
+
         </>
       )}
 
       {activeItem == "User Events" && (
         <>
           <div className="sectionNav-userProPic">
-            <img src={UserPic} alt='User' />
+            <img src={UserPic} alt="User" />
           </div>
           <div className="sectionNav-userName">
-            <h3>{cookies.first_name} {cookies.last_name}</h3>
+            <h3>
+              {cookies.first_name} {cookies.last_name}
+            </h3>
             <h3>Welcome !</h3>
           </div>
+          <div className="section-navLogout1">
+        <div className="section-navLogout-Btn" onClick={() => handleLogout()}>
+          <h3>Logout</h3>
+        </div>
+      </div>
         </>
       )}
 
       {cookies.event_id && (
         <>
-          <p>{cookies.event_name}</p>
+          <p className="sectionNav-eventName">{cookies.event_name}</p>
+          <div className="backtoEventsBtn">
+          <p onClick={()=>handleBackToEvents()}>Back to events</p>
+
+          </div>
         </>
-      )} 
+      )}
+
+      {activeItem !== "User Events" && (
+        <>
+      <div className="section-navLogout">
+        <div className="section-navLogout-Btn" onClick={() => handleLogout()}>
+          <h3>Logout</h3>
+        </div>
+      </div>
+        </>
+      )}
+
+
     </div>
   );
 }

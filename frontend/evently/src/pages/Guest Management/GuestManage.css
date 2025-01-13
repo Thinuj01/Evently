@@ -92,6 +92,7 @@
 }
 .guestManage-table-container th,td{
     border-bottom: 1px solid #ddd;
+    text-align: left;
 }
 .guestManage-table-container tr{
     padding: 1rem;
@@ -99,6 +100,7 @@
 }
 .guestManage-table-container tr:hover{
     background-color: #C3DAFF;
+    height: 4vh;
 }
 .guestManage-table-container th{
     padding: 0.5rem;
@@ -138,4 +140,33 @@
 
 .inviteForm-container{
 
+}
+
+.guestManageEdit{
+    width: 13%;
+    background-color: green;
+    padding: 0.5vw;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    height: 0.5vh;
+}
+
+.guestManageDelete{
+    width: 13%;
+    background-color: red;
+    padding: 0.5vw;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    height: 0.5vh;
+}
+
+.guestManageEdit:hover{
+    scale: 1.04;
+    font-size: larger;
+}
+.guestManageDelete:hover{
+    scale: 1.04;
+    font-size: larger;
 }

@@ -37,6 +37,8 @@
     font-size:1rem;
     font-style: normal;
     border: 1px solid #002663;
+    height: 4vh;
+    padding-left: 2vw;
 }
 .EventAddForm-input input:focus{
     border: 2px solid #002663;
@@ -63,6 +65,7 @@
     font-size:1rem;
     font-style: normal;
     border: 1px solid #002663;
+    padding-left: 2vw;
 }
 .inputEvent-clientAdd:focus{
     border: 2px solid #002663;

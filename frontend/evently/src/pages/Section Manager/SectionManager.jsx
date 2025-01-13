@@ -7,7 +7,7 @@ import TaskManage from '../Task Management/TaskManage';
 import UserEvents from '../User Events/UserEvents';
 
 function SectionManager() {
-    const[activeItem,setActiveItem] = useState("Task Management");
+    const[activeItem,setActiveItem] = useState("User Events");
     const[activeEvent, setActiveEvent] = useState("");
 
     const handleChangeActiveItem = (ItemName) =>{
@@ -17,7 +17,7 @@ function SectionManager() {
     const renderSector = ()=>{
       switch(activeItem)  {
         case "Guest Management":
-          return <GuestManage />;
+          return <GuestManage handleChangeActiveItem={handleChangeActiveItem}/>;
         case "Task Management":
           return <TaskManage />;
         case "User Events":

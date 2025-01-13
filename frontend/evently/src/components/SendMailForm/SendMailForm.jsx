@@ -1,42 +1,84 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React,{useState} from 'react'
 import "./SendMailForm.css"
 import { IoIosSend } from "react-icons/io";
+import axios from "axios";
 
-function SendMailForm() {
+function SendMailForm({onClose}) {
+  const [invitation, setInvitation] = useState({
+    guest_email:"",
+    guest_subject:"",
+    guest_message:"",	 
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChanges = (e) => {
+    setInvitation({
+      ...invitation,
+      [e.target.name]: e.target.value, });
+  };
+
+  const handleOnClick = () => {
+    setIsLoading(true);
+    console.log(invitation);
+    axios.post('http://localhost:8000/guests/invite/',invitation)
+    .then((response) => {
+      console.log("Invitation sent",response.data);
+      setIsLoading(false);
+      onClose();
+    }).catch((error) => { 
+      console.error(error);
+    });
+  };
+
   return (
-    <div className="sendMailForm-sector">
-      <div className="sendMailForm-title">
+    <div className="inviteForm-sector">
+      <div className="inputForm-title">
         <h2>SEND MAIL</h2>
       </div>
-      <div className="sendMailForm-input">
-        <label htmlFor="input-To">To</label>
-        <input name="input-To" type="text" className="input-To"></input>
+      <div className="inviteForm-input">
+        <label htmlFor="guest_email">To</label>
+        <input name="guest_email" type="text" className="input-To" onChange={handleChanges} value={invitation.guest_email}></input>
       </div>
-      <div className="sendMailForm-input">
-        <label htmlFor="input-subject">Subject</label>
+      <div className="inviteForm-input">
+        <label htmlFor="guest_subject">Subject</label>
         <input
-          name="input-subject"
+          name="guest_subject"
           type="text"
           className="input-subject"
+          onChange={handleChanges}
+          value={invitation.guest_subject}
         ></input>
       </div>
-      <div className="sendMailForm-input">
-        <label htmlFor="input-message">Message</label>
+      <div className="inviteForm-input">
+        <label htmlFor="guest_message">Message</label>
         <input
-          name="input-message"
+          name="guest_message"
           type="text"
           className="input-message"
+          onChange={handleChanges}
+          value={invitation.guest_message}
         ></input>
       </div>
-      <div className="sendMailForm-sendBtn-container">
-        <div className="sendMailForm-sendBtn">
+      <div className="inputForm-sendBtn-container">
+
+
+        {isLoading ? (
+        <div className="inputForm-sendBtn" onClick={()=>handleOnClick()}>
+        <IoIosSend />
+        Sending...
+      </div>
+        ) : (
+          <div className="inputForm-sendBtn" onClick={()=>handleOnClick()}>
           <IoIosSend />
           Send
         </div>
+        )}
       </div>
     </div>
-  )
+  );
 }
 
 export default SendMailForm

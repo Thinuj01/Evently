@@ -14,3 +14,62 @@
     width: 75%;
     height: 100vh;
 }
+
+.section-navLogout{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 0.4vw;
+    margin-top: 5vh;
+    width: 80%;
+}
+
+.section-navLogout-Btn{
+    width: 100%;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #be0000;
+    color: white;
+    border-radius: 0.6vw;
+    transition: all 0.2s ease-in-out;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.section-navLogout-Btn:hover{
+    scale: 1.02;
+}
+
+.section-navLogout1{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 0.4vw;
+    margin-top: 20vh;
+    width: 80%;
+}
+
+.backtoEventsBtn{
+    width: 70%;
+    height: 4vh;
+    background-color: rgb(7, 170, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.6vw;
+    color: white;
+    cursor: pointer;
+}
+
+.backtoEventsBtn:hover{
+    scale: 1.02;
+
+}
+
+.sectionNav-eventName{
+    color:  #002663;
+    font-weight: 600;
+    margin-top: 30vh;
+}
