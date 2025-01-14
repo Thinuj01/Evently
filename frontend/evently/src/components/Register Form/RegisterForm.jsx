@@ -62,6 +62,7 @@ function RegisterForm() {
             Register
           </button>
         </div>
+        <a href="/login">If you already have a account...</a>
       </form>
     </div>
   );
