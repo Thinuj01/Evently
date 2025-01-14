@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Categories</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f5f5f5; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .container { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 400px; }
+        .header { font-size: 24px; text-align: center; margin-bottom: 20px; font-weight: bold; }
+        ul { list-style: none; padding: 0; margin-top: 15px; }
+        li { background-color: #f0f0f0; margin: 5px 0; padding: 10px; border-radius: 4px; }
+        .form-group { margin-bottom: 15px; }
+        input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #003366; color: white; padding: 10px; border: none; border-radius: 4px; width: 100%; cursor: pointer; }
+        button:hover { background-color: #0055cc; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Expense Categories</div>
+        <form>
+            <div class="form-group">
+                <input type="text" id="new-category" placeholder="Category Name" required>
+            </div>
+            <button type="button" onclick="addCategory()">Add</button>
+        </form>
+        <ul id="categories-list">
+            <li>Meals</li>
+            <li>Venue</li>
+            <li>Decorations</li>
+        </ul>
+    </div>
+    <script>
+        function addCategory() {
+            const category = document.getElementById("new-category").value.trim();
+            if (category) {
+                const li = document.createElement("li");
+                li.textContent = category;
+                document.getElementById("categories-list").appendChild(li);
+                document.getElementById("new-category").value = "";
+            }
+        }
+    </script>
+</body>
+</html>

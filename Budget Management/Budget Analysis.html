@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Analysis</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+        }
+        .side-nav {
+            width: 200px;
+            background-color: #003366;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .side-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .side-nav a:hover {
+            text-decoration: underline;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .category-box {
+            display: flex;
+            justify-content: space-between;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+        .category-box div {
+            text-align: center;
+        }
+        .category-box button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .category-box button:hover {
+            background-color: #0055cc;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            text-align: center;
+        }
+        .close-btn {
+            background-color: #cc0000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            background-color: #ff3333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Side Navigation -->
+    <div class="side-nav">
+     
+        <a href="#">Guest Management</a>
+        <a href="#">Budget Management</a>
+        <a href="#">Task Management</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">Budget Analysis</div>
+
+        <!-- Budget Overview -->
+        <div class="category-box">
+            <div>
+                <strong>Category: Meals</strong>
+                <p>Total Budget: $1000</p>
+                <p>Spent: $700</p>
+                <button onclick="openModal('Meals', 1000, 700)">View Details</button>
+            </div>
+            <div>
+                <strong>Category: Venue</strong>
+                <p>Total Budget: $1500</p>
+                <p>Spent: $1100</p>
+                <button onclick="openModal('Venue', 1500, 1100)">View Details</button>
+            </div>
+        </div>
+
+        <div class="category-box">
+            <div>
+                <strong>Category: Decorations</strong>
+                <p>Total Budget: $800</p>
+                <p>Spent: $600</p>
+                <button onclick="openModal('Decorations', 800, 600)">View Details</button>
+            </div>
+            <div>
+                <strong>Category: Entertainment</strong>
+                <p>Total Budget: $500</p>
+                <p>Spent: $300</p>
+                <button onclick="openModal('Entertainment', 500, 300)">View Details</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="detailsModal">
+        <div class="modal-content">
+            <h2 id="modal-title">Details</h2>
+            <p id="modal-budget"></p>
+            <p id="modal-spent"></p>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to show Budget Analysis Section
+        function showBudgetAnalysis() {
+            document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Function to Open Modal
+        function openModal(category, totalBudget, spent) {
+            document.getElementById('modal-title').innerText = `Details for ${category}`;
+            document.getElementById('modal-budget').innerText = `Total Budget: $${totalBudget}`;
+            document.getElementById('modal-spent').innerText = `Spent: $${spent}`;
+            document.getElementById('detailsModal').style.display = 'flex';
+        }
+
+        // Function to Close Modal
+        function closeModal() {
+            document.getElementById('detailsModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
