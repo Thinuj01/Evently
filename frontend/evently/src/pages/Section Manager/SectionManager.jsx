@@ -5,6 +5,7 @@ import SectionNavbar from '../../components/SectionNavbar/SectionNavbar'
 import GuestManage from '../Guest Management/GuestManage';
 import TaskManage from '../Task Management/TaskManage';
 import UserEvents from '../User Events/UserEvents';
+import BudgetManage from '../Budget Management/BudgetManage';
 
 function SectionManager() {
     const[activeItem,setActiveItem] = useState("User Events");
@@ -20,6 +21,8 @@ function SectionManager() {
           return <GuestManage handleChangeActiveItem={handleChangeActiveItem}/>;
         case "Task Management":
           return <TaskManage />;
+        case "Budget Management":
+          return <BudgetManage/>;
         case "User Events":
           return <UserEvents handleChangeActiveItem={handleChangeActiveItem}/>;
           

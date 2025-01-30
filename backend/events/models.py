@@ -9,6 +9,7 @@ class Event(models.Model):
     event_client_name = models.CharField(max_length=200, null=False, blank=False)
     event_client_phone = models.CharField(max_length=200, null=False, blank=False)
     event_client_address = models.TextField()
+    event_budget = models.FloatField(null=False, blank=False, default=0)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

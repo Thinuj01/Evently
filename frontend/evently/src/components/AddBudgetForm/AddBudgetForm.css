@@ -1,0 +1,112 @@
+.AddBudgetForm-sector{
+    width:90%;
+    display: flex;
+    flex-direction: column;
+}
+.AddBudgetForm-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Inter", sans-serif;
+    font-size:1.1rem;
+    font-style: normal;
+    color: #002663;
+    margin-left: 8vw;
+}
+.AddBudgetForm-input{
+    color: #002663;
+    font-family: "Inter", sans-serif;
+    font-size:1.1rem;
+    font-style: normal;
+    margin-left: 7vw;
+    margin-top: 5vh;
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.AddBudgetForm-input label{
+    width: 20%;
+}
+.AddBudgetForm-input input{
+    background-color: white;
+    border-radius: 1vw;
+    color: #002663;
+    font-family: "Inter", sans-serif;
+    font-size:1rem;
+    font-style: normal;
+    border: 1px solid #002663;
+    height: 4vh;
+    padding-left: 2vw;
+}
+.AddBudgetForm-input select{
+    background-color: white;
+    border-radius: 1vw;
+    color: #002663;
+    font-family: "Inter", sans-serif;
+    font-size:1rem;
+    font-style: normal;
+    border: 1px solid #002663;
+}
+.AddBudgetForm-input input:focus{
+    border: 2px solid #002663;
+    outline: none;
+    box-shadow: 3px 5px rgba(0, 38, 99,0.2);
+}
+.input-name{
+    width: 80%;
+    height: 3vh;
+}
+.input-address{
+    width: 80%;
+    height: 5vh;
+}
+.input-notes{
+    background-color: white;
+    border-radius: 1vw;
+    color: #002663;
+    font-family: "Inter", sans-serif;
+    font-size:1rem;
+    font-style: normal;
+    border: 1px solid #002663;
+    height: 4vh;
+    padding-left: 2vw;
+    width: 80%;
+    height: 10vh;
+}
+.input-notes:focus{
+    border: 2px solid #002663;
+    outline: none;
+    box-shadow: 3px 5px rgba(0, 38, 99,0.2);
+}
+.input-date{
+    width: 15%;
+    height: 3vh;
+}
+
+.AddBudgetForm-addBtn-container{
+    width:100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10vh;
+    font-family: "Inter", sans-serif;
+    font-size:1.1rem;
+    font-style: normal;
+    margin-left: 1.5vw;
+}
+.AddBudgetForm-addBtn{
+    background-color: #002663;
+    width: 13%;
+    height: 4vh;
+    color: white;
+    border-radius: 1vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: all 0.1s ease-in-out;
+}
+.AddBudgetForm-addBtn:hover{
+    scale: 1.04;
+    cursor: pointer;
+}

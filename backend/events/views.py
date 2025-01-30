@@ -45,3 +45,27 @@ class EventsByUser(APIView):
         serializer = EventSerializer(events, many=True)
         return Response(serializer.data)
     
+class EventEdit(APIView):
+    def put(self, request, event_id):
+        try:
+            event = Event.objects.get(pk=event_id)
+        except Event.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        data = request.data
+        try:
+            user = User.objects.get(pk=data['user'])
+        except User.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        event.event_name = data.get('event_name')
+        event.event_venue = data.get('event_venue')
+        event.event_date = data.get('event_date')
+        event.event_client_name = data.get('event_client_name')
+        event.event_client_phone = data.get('event_client_phone')
+        event.event_client_address = data.get('event_client_address')
+        event.event_budget = data.get('event_budget')
+        event.user = user
+        event.save()
+        return Response(status=status.HTTP_200_OK)
+    
