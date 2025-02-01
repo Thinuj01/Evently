@@ -9,6 +9,7 @@ import AddBudgetForm from "../../components/AddBudgetForm/AddBudgetForm";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import EditBudgetForm from "../../components/EditBudgetForm/EditBudgetForm";
+import { SiCashapp } from "react-icons/si";
 
 
 function BudgetManage() {
@@ -64,7 +65,7 @@ function BudgetManage() {
         <BudgetOverview total={totalExpenses}/>
       </div>
       <div className="budgetManage-addExpense">
-        <div className="budgetManage-addExpense-Btn" onClick={()=>setIsAddBudgetModelOpen(true)}>Add a Expense</div>
+        <div className="budgetManage-addExpense-Btn" onClick={()=>setIsAddBudgetModelOpen(true)}><SiCashapp/> Add a Expense</div>
       </div>
       <div className="budgetManage-table-container">
         {budget.length === 0 ? (

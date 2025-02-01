@@ -1,24 +1,33 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useCookies } from "react-cookie";
 
 const AddTask = ({ addTask }) => {
     // Local state for form inputs
     const [taskName, setTaskName] = useState("");
     const [deadline, setDeadline] = useState("");
     const [assignedTo, setAssignedTo] = useState("");
+      const [cookies] = useCookies(["event_id"]);
+    const [task, setTask] = useState({event_id:cookies.event_id});
+
+    const handleChanges = (e) => {
+        setTask({
+          ...task,
+          [e.target.name]: e.target.value, });
+      };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (taskName && deadline && assignedTo) {
-            // Create new task object with default status as "Pending"
-            const newTask = { name: taskName, deadline, assignedTo, status: "Pending" };
-            addTask(newTask); // Pass the new task to the parent component
-            // Reset the form
-            setTaskName("");
-            setDeadline("");
-            setAssignedTo("");
-        } else {
-            alert("Please fill in all fields!");
-        }
+        console.log(task);
+        axios.post('http://localhost:8000/tasks/create/',task)
+        addTask()
+      .then((response)=>{
+        console.log("Task added");
+      }).catch((error)=>{
+        console.error(error);
+      })
     };
 
     return (
@@ -28,20 +37,20 @@ const AddTask = ({ addTask }) => {
                 <input
                     type="text"
                     placeholder="Task Name"
-                    value={taskName}
-                    onChange={(e) => setTaskName(e.target.value)}
+                    name='task_name'
+                    onChange={handleChanges}
                 />
                 <input
                     type="date"
                     placeholder="Deadline"
-                    value={deadline}
-                    onChange={(e) => setDeadline(e.target.value)}
+                    name='task_deadline'
+                    onChange={handleChanges}
                 />
                 <input
                     type="text"
                     placeholder="Assigned To"
-                    value={assignedTo}
-                    onChange={(e) => setAssignedTo(e.target.value)}
+                    name='task_assigned_to'
+                    onChange={handleChanges}
                 />
                 <button type="submit">Add Task</button>
             </form>

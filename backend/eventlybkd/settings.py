@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'tasks.apps.TasksConfig',	
     'budgets.apps.BudgetsConfig',
     'accounts.apps.AccountsConfig',
     'events.apps.EventsConfig',

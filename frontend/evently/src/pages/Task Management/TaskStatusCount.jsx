@@ -1,11 +1,13 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 const TaskStatusCount = ({ tasks }) => {
     // Calculate the count for each status
     const statusCount = {
-        Pending: tasks.filter(task => task.status === 'Pending').length,
-        'In Progress': tasks.filter(task => task.status === 'In Progress').length,
-        Completed: tasks.filter(task => task.status === 'Completed').length,
+        Pending: tasks.filter(task => task.task_status === 'Pending').length,
+        'In Progress': tasks.filter(task => task.task_status === 'In Progress').length,
+        Completed: tasks.filter(task => task.task_status === 'Completed').length,
     };
 
     return (

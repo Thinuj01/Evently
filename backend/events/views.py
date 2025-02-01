@@ -69,3 +69,13 @@ class EventEdit(APIView):
         event.save()
         return Response(status=status.HTTP_200_OK)
     
+class EventDelete(APIView):
+    def delete(self, request, event_id):
+        try:
+            event = Event.objects.get(pk=event_id)
+        except Event.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        event.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    

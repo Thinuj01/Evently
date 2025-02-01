@@ -5,6 +5,7 @@ import './BudgetOverview.css'
 import { useCookies } from "react-cookie";
 import axios from "axios";
 
+
 function BudgetOverview({total}) {
   const [cookies] = useCookies(["event_id"]);
   const [event,setEvent] = useState({});
@@ -43,19 +44,19 @@ const onClickUpdate = () => {
   return (
     <div className='BudgetOverview-container'>
         <div className="BudgetOverview-containerItem">
-          <p>Estimated Budget : Rs </p>
+          <p>Estimated Budget <strong>: Rs </strong></p>
           <input type="number" value={event.event_budget} name='event_budget' onChange={handleChanges}></input>
-          <p>.00</p>
+          <strong><p>.00</p></strong>
 
           <div className="BudgetOverview-submitBtn" onClick={onClickUpdate}>
             Update
           </div>
         </div>
         <div className="BudgetOverview-containerItem">
-          <p>Current Expenses : Rs {total}.00</p>
+          <p>Current Expenses : <strong>Rs {total}.00</strong></p>
         </div>
         <div className="BudgetOverview-containerItem">
-          <p>Remaining Budget : Rs {event.event_budget-total}.00</p>
+          <p>Remaining Budget : <strong>Rs {event.event_budget-total}.00</strong></p>
         </div>
     </div>
   )

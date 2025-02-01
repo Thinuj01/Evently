@@ -1,61 +1,70 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react';
 import "./TaskManage.css";
 import AddTask from './AddTask';
-import TaskStatusCount from './TaskStatusCount'; // Import TaskStatusCount component
+import TaskStatusCount from './TaskStatusCount';
+import axios from 'axios';
+import { useCookies } from 'react-cookie';
+import { FaRegEdit } from "react-icons/fa";
+import { MdDeleteOutline } from "react-icons/md";
 
 const TaskManage = () => {
-    const [tasks, setTasks] = useState([
-        { name: "Decorate Venue", deadline: "2024-01-10", assignedTo: "John", status: "Pending" },
-        { name: "Order Catering", deadline: "2024-01-12", assignedTo: "Lisa", status: "In Progress" }
-    ]);
+    const [tasks, setTasks] = useState([]);
     const [editingTaskIndex, setEditingTaskIndex] = useState(null);
+    const [cookies] = useCookies(['event_id']);
+    const [useEffectRunner, setUseEffectRunner] = useState(false);
     const [editedTask, setEditedTask] = useState({
-        name: "",
-        deadline: "",
-        assignedTo: "",
-        status: ""
+        task_name: "",
+        task_deadline: "",
+        task_assigned_to: "",
+        task_status: ""
     });
 
+    useEffect(() => {
+        axios.get(`http://localhost:8000/tasks/event/${cookies.event_id}/`)
+            .then(response => {
+                setTasks(response.data);
+            })
+            .catch(error => console.log(error));
+    }, [useEffectRunner]);
+
     const addTask = (newTask) => {
-        setTasks([...tasks, newTask]);
+        setUseEffectRunner(!useEffectRunner);
     };
 
     const handleStatusChange = (index, newStatus) => {
-        const updatedTasks = [...tasks];
-        updatedTasks[index].status = newStatus;
-        setTasks(updatedTasks);
+        const updatedTask = { ...tasks[index], task_status: newStatus };
+    
+        axios.put(`http://localhost:8000/tasks/edit/${updatedTask.task_id}/`, updatedTask)
+            .then(() => {
+                setUseEffectRunner(!useEffectRunner);
+            })
+            .catch(error => console.error("Error updating task status:", error));
     };
+    
 
     const handleDeleteTask = (index) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this task?");
         if (confirmDelete) {
-            const updatedTasks = tasks.filter((_, taskIndex) => taskIndex !== index);
-            setTasks(updatedTasks);
+            const taskId = tasks[index].task_id;
+
+            axios.delete(`http://localhost:8000/tasks/delete/${taskId}/`)
+                .then(() => {
+                    setUseEffectRunner(!useEffectRunner);
+                })
+                .catch(error => console.error("Error deleting task:", error));
         }
     };
 
     const handleEditClick = (task, index) => {
         setEditingTaskIndex(index);
-        setEditedTask({ ...task }); // Pre-fill the edited task with the current task values
+        setEditedTask({ ...task });
     };
 
     const handleEditChange = (e) => {
         setEditedTask({
             ...editedTask,
             [e.target.name]: e.target.value,
-        });
-    };
-
-    const handleSaveEdit = () => {
-        const updatedTasks = [...tasks];
-        updatedTasks[editingTaskIndex] = editedTask;
-        setTasks(updatedTasks);
-        setEditingTaskIndex(null); // Close the edit form
-        setEditedTask({
-            name: "",
-            deadline: "",
-            assignedTo: "",
-            status: "",
         });
     };
 
@@ -70,6 +79,21 @@ const TaskManage = () => {
             default:
                 return '#f1f5f9'; 
         }
+    };
+
+    const handleSaveEdit = () => {
+        axios.put(`http://localhost:8000/tasks/edit/${tasks[editingTaskIndex].task_id}/`, editedTask)
+            .then(() => {
+                setUseEffectRunner(!useEffectRunner);
+                setEditingTaskIndex(null);
+                setEditedTask({
+                    task_name: "",
+                    task_deadline: "",
+                    task_assigned_to: "",
+                    task_status: "",
+                });
+            })
+            .catch(error => console.error("Error updating task:", error));
     };
 
     return (
@@ -91,21 +115,21 @@ const TaskManage = () => {
                                 <th>Deadline</th>
                                 <th>Assigned To</th>
                                 <th>Status</th>
-                                <th>Action</th> {/* New column for actions */}
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {tasks.map((task, index) => (
                                 <tr key={index}>
-                                    <td>{task.name}</td>
-                                    <td>{task.deadline}</td>
-                                    <td>{task.assignedTo}</td>
+                                    <td>{task.task_name}</td>
+                                    <td>{task.task_deadline}</td>
+                                    <td>{task.task_assigned_to}</td>
                                     <td>
                                         <select
-                                            value={task.status}
+                                            value={task.task_status}
                                             onChange={(e) => handleStatusChange(index, e.target.value)}
                                             style={{
-                                                backgroundColor: getStatusBackgroundColor(task.status),
+                                                backgroundColor: getStatusBackgroundColor(task.task_status),
                                                 color: 'white',
                                                 border: 'none',
                                                 padding: '5px 10px',
@@ -118,21 +142,9 @@ const TaskManage = () => {
                                         </select>
                                     </td>
                                     <td>
-                                        <a
-                                            href="#edit"
-                                            className="edit-link"
-                                            onClick={() => handleEditClick(task, index)}
-                                        >
-                                            Edit
-                                        </a>
-                                        <span className="space-between" />
-                                        <a
-                                            href="#delete"
-                                            className="delete-link"
-                                            onClick={() => handleDeleteTask(index)}
-                                        >
-                                            Delete
-                                        </a>
+                                        <a href="#edit" onClick={() => handleEditClick(task, index)}><FaRegEdit /> Edit</a>
+                                        <span> | </span>
+                                        <a href="#delete" onClick={() => handleDeleteTask(index)}><MdDeleteOutline/> Delete</a>
                                     </td>
                                 </tr>
                             ))}
@@ -140,61 +152,32 @@ const TaskManage = () => {
                     </table>
                 </div>
 
-                {/* Edit Form */}
                 {editingTaskIndex !== null && (
                     <div className="edit-form-container">
                         <h3>Edit Task</h3>
                         <form>
                             <label>
                                 Task Name:
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value={editedTask.name}
-                                    onChange={handleEditChange}
-                                    placeholder="Enter task name"
-                                />
+                                <input type="text" name="task_name" value={editedTask.task_name} onChange={handleEditChange} />
                             </label>
                             <label>
                                 Deadline:
-                                <input
-                                    type="date"
-                                    name="deadline"
-                                    value={editedTask.deadline}
-                                    onChange={handleEditChange}
-                                />
+                                <input type="date" name="task_deadline" value={editedTask.task_deadline} onChange={handleEditChange} />
                             </label>
                             <label>
                                 Assigned To:
-                                <input
-                                    type="text"
-                                    name="assignedTo"
-                                    value={editedTask.assignedTo}
-                                    onChange={handleEditChange}
-                                    placeholder="Enter assignee"
-                                />
+                                <input type="text" name="task_assigned_to" value={editedTask.task_assigned_to} onChange={handleEditChange} />
                             </label>
                             <label>
                                 Status:
-                                <select
-                                    name="status"
-                                    value={editedTask.status}
-                                    onChange={handleEditChange}
-                                >
+                                <select name="task_status" value={editedTask.task_status} onChange={handleEditChange}>
                                     <option value="Pending">Pending</option>
                                     <option value="In Progress">In Progress</option>
                                     <option value="Completed">Completed</option>
                                 </select>
                             </label>
-                            <button type="button" onClick={handleSaveEdit}>
-                                Save Changes
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => setEditingTaskIndex(null)} // Close the edit form
-                            >
-                                Cancel
-                            </button>
+                            <button type="button" onClick={handleSaveEdit}>Save Changes</button>
+                            <button type="button" onClick={() => setEditingTaskIndex(null)}>Cancel</button>
                         </form>
                     </div>
                 )}

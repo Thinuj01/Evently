@@ -25,7 +25,9 @@
     margin-left: 0.2vw;
     border: 2px solid #002663;
     font-size: 0.8vw;
-    padding-left: 0.5vw;
+    font-weight: bold;
+    font-size: large;
+    text-align: end;
 }
 .BudgetOverview-submitBtn{
     width: 10%;
